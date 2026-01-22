@@ -17,6 +17,9 @@ for root, dirs, files in os.walk(analysis_directory_path):
         if file == 'analysis.xlsx':
             excel_files.append(os.path.join(root, file))
 
+# ファイル名でソート(番号順に処理)
+excel_files.sort()
+
 if not excel_files:
     print("エラー：参照するエクセルファイルが見つかりませんでした。")
 else:

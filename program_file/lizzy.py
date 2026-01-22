@@ -10,7 +10,7 @@ analysis_directory_path = './output'
 # 除外するフォルダのセット
 exclude_folders = {'output_log'}
 
-# 特定のファイルを再帰的に取得していく
+# 特定のファイルを再帰的に取得していく関数
 def get_specific_files_recursively(target_file_name):
     get_files = []
     for root, dirs, files in os.walk(analysis_directory_path):
@@ -22,7 +22,11 @@ def get_specific_files_recursively(target_file_name):
                 get_files.append(os.path.join(root, file))
     return get_files
 
+# tsvファイルを再帰的に取得する
 tsv_files = get_specific_files_recursively('output_file3.tsv')
+
+# ファイル名でソート(番号順に処理)
+tsv_files.sort()
 
 output_file = "./output/merged_output.csv" # 出力CSVファイル名
 start_line = 14                   # 抽出開始行（1始まり）

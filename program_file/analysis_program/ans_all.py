@@ -64,6 +64,9 @@ output_file_path = "./output/output_file.txt"
 bisulfite_folder = "./input/bisulfite/"  # バイサルファイト処理後の配列
 bisulfite_files = [os.path.join(bisulfite_folder, f) for f in os.listdir(bisulfite_folder) if f.endswith('.fasta')]
 
+# ファイル名でソート(番号順に処理)
+bisulfite_files.sort()
+
 # オプションの値を取得
 f_option = str(df.iloc[1, 1])
 d_option = str(df.iloc[2, 1])
