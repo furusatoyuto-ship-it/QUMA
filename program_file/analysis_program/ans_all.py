@@ -5,45 +5,6 @@ QUMAを解析するためのプログラム。
 import subprocess
 import os
 import pandas as pd
-#import sys
-
-"""
-# merged.fastaファイルを取得する
-merged_fasta_path = "./input/genomic/merged.fasta" # バイサルファイト処理前の配列
-
-# BLASTを実行する関数
-def run_blast(genome_files, query_file):
-    genome_db_path = "./output/genome_db"
-    if not os.path.exists(genome_db_path):
-        subprocess.run(["makeblastdb", "-in", genome_files, "-dbtype", "nucl", "-out", genome_db_path])
-
-    evalue_threshold = "100000"
-    result = subprocess.run(
-        ["blastn", "-query", query_file, "-db", genome_db_path, "-outfmt", "6", "-max_target_seqs", "1", "-evalue", evalue_threshold],
-        capture_output=True, text=True
-    )
-    print("e-valueは", evalue_threshold)
-    
-    print("標準出力(stdout)")
-    print(result.stdout)
-    print("標準エラー(stderr)")
-    print(result.stderr)
-    print("終了コード(returncode)")
-    print(result.returncode)
-
-    best_score = -1
-    best_genome = None
-    
-    for line in result.stdout.strip().split("\n"):
-        cols = line.split("\t")
-        print(cols)
-        score = int(cols[11])  # bit score
-        if score > best_score:
-            best_score = score
-            best_genome = cols[1]
-
-    return best_genome
-"""
 
 # settingファイルのパスを指定
 setting_file_path = './setting.csv'
@@ -130,15 +91,10 @@ def command_def(genomic_data_sample, bisulfite_data_sample):
 # bisulfite_dataの数だけ繰り返す
 for bisulfite_data in bisulfite_files:
     print("バイサルファイト処理後のファイルは" + bisulfite_data)
-    #genomic_data = run_blast(merged_fasta_path, bisulfite_data)
-    #genomic_data_path = "./input/genomic/" + "_".join(genomic_data.split("_")[:2]) + ".fasta"
-    #print("バイサルファイト処理前のファイルは" + genomic_data)
-    #print("パス名は" + genomic_data_path)
     #解析番号を付与
     #masss = [0, 1, 2, 3]
     masss = [3]
     for mass in masss:
-        #command, output_file_path = command_def(genomic_data_path, bisulfite_data)
         command, output_file_path = command_def(genomic_data, bisulfite_data)
 
 

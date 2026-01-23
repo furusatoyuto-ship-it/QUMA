@@ -5,12 +5,6 @@ from datetime import datetime
 current_time_s = datetime.now()
 print("解析開始時間:", current_time_s)
 
-
-#プログラムを実行したい
-#print("mergedfasta.py start")
-#subprocess.run(["python","./program_file/analysis_program/mergedfasta.py"])
-
-
 #前回の記録を行う
 print("log.py start")
 subprocess.run(["python","./program_file/analysis_program/log.py"])
